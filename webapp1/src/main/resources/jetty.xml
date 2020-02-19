@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_3.dtd">
+
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+
+	<Call name="setHandler">
+		<Arg>
+			<New class="org.eclipse.jetty.server.handler.HandlerCollection">
+				<Call name="addHandler">
+					<Arg>
+						<New id="wac" class="org.eclipse.jetty.webapp.WebAppContext">
+							<Call name="setResourceBase">
+								<Arg><SystemProperty name="project.basedir"/>/src/main/webapp</Arg>
+							</Call>
+							<Call name="setClassLoader">
+								<Arg>
+									<New class="com.ck.myclassloader1.MyClassloader">
+										<Arg>
+											<Ref refid="wac" />
+										</Arg>
+									</New>
+								</Arg>
+							</Call>
+						</New>
+					</Arg>
+				</Call>
+			</New>
+		</Arg>
+	</Call>
+
+</Configure>
