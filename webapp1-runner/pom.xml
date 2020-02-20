@@ -21,14 +21,8 @@
 				<configuration>
 					<skip>false</skip>
 					<daemon>false</daemon>
-					<jettyXml>${project.basedir}/../webapp1/src/main/resources/maven-jetty.xml</jettyXml>
 					<war>${project.basedir}/../webapp1/target/webapp1.war</war>
-					<systemProperties>
-						<systemProperty>
-							<name>project.basedir</name>
-							<value>${project.basedir}/../webapp1</value>
-						</systemProperty>
-					</systemProperties>
+					<webAppXml>${project.basedir}/webapp-context.xml</webAppXml>
 				</configuration>
 				<dependencies>
 					<dependency>

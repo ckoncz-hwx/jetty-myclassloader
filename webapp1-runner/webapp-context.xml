@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_3.dtd">
+
+<Configure id="wac" class="org.eclipse.jetty.webapp.WebAppContext">
+	<Call name="setClassLoader">
+		<Arg>
+			<New class="com.ck.myclassloader1.MyClassloader">
+				<Arg>
+					<Ref refid="wac" />
+				</Arg>
+			</New>
+		</Arg>
+	</Call>
+</Configure>
