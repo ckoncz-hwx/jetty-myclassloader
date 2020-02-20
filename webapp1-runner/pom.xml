@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>webapp1-runner</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>com.ck</groupId>
+		<artifactId>jetty-myclassloader</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<configuration>
+					<skip>false</skip>
+					<daemon>false</daemon>
+					<jettyXml>${project.basedir}/../webapp1/src/main/resources/maven-jetty.xml</jettyXml>
+					<war>${project.basedir}/../webapp1/target/webapp1.war</war>
+					<systemProperties>
+						<systemProperty>
+							<name>project.basedir</name>
+							<value>${project.basedir}/../webapp1</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.ck</groupId>
+						<artifactId>myclassloader1</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>
